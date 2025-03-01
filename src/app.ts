@@ -5,6 +5,7 @@ import "./config/dbConnect";
 
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 import userRouter from "./routes/user.routes";
+import productRouter from "./routes/product.routes";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 // Routes
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/products", productRouter);
 
 // Error handler
 app.use(globalErrorHandler);
