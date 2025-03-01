@@ -2,6 +2,7 @@ import express from "express";
 
 import isLogin from "../middlewares/isLogin";
 import {
+  productGeneratePDFCtrl,
   productListCtrl,
   productRegisterCtrl,
 } from "../controllers/product.controller";
@@ -19,5 +20,8 @@ productRouter.post(
   upload.single("image"),
   productRegisterCtrl
 );
+
+// GET /api/v1/products/generatePDF
+productRouter.get("/generatePDF/:id", productGeneratePDFCtrl);
 
 export default productRouter;

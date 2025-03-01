@@ -6,6 +6,7 @@ import {
   convertToBase64Image,
   getUrlFromCloudinary,
 } from "../utils/imageFunctions";
+import { generatePDF } from "../utils/generatePDF";
 
 export const productRegisterCtrl = async (
   req: Request,
@@ -50,16 +51,42 @@ export const productRegisterCtrl = async (
 };
 
 export const productListCtrl = async (
+  _req: Request,
+  res: Response,
+  _next: NextFunction
+) => {
+  try {
+    const products = await Product.find();
+    res.status(200).json({
+      status: "success",
+      data: products,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      status: "error",
+      message: "Error loading products",
+      error: error.message,
+    });
+  }
+};
+
+export const productGeneratePDFCtrl = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const products = await Product.find();
   try {
-    res.json({
-      status: "success",
-      data: products,
-    });
+    if (!req.params.id) {
+      next(new AppError("Id its necessary."));
+    }
+
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      next(new AppError("Product not found ."));
+    }
+
+    await generatePDF(product, res);
   } catch (error) {
     next(new AppError(error.message));
   }
