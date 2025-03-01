@@ -4,6 +4,7 @@ import { development } from "./environments/development";
 import "./config/dbConnect";
 
 import globalErrorHandler from "./middlewares/globalErrorHandler";
+import userRouter from "./routes/user.routes";
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
+app.use("/api/v1/users", userRouter);
 
 // Error handler
 app.use(globalErrorHandler);

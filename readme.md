@@ -8,6 +8,9 @@ Catalog API
 2. Express
 3. JWT
 4. MongoDB
+5. Cloudinary
+6. Typescript
+7. PDFKIT
 
 ## 🛠 Installing
 
