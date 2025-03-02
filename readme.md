@@ -19,6 +19,22 @@ Catalog API
 $ npm install
 ```
 
+## 🔑 Environment Variables
+
+```bash
+# development
+  APP_PORT=3001
+  MONGO_URL=mongodb://localhost:27017/catalog_api
+  JWT_KEY=your_jwt_secret
+  CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+  CLOUDINARY_CLOUD_API_KEY=your_cloudinary_api_key
+  CLOUDINARY_CLOUD_API_SECRET=your_cloudinary_api_secret
+  CLOUDINARY_FOLDER_NAME=your_cloudinary_folder
+```
+
+- [Cloudinary](https://cloudinary.com/)
+
+
 ## 🍏 Running App
 
 ```bash

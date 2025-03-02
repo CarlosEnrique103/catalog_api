@@ -38,7 +38,7 @@ export const generatePDF = async (product: IProduct, res: Response) => {
   doc.moveDown(0.5);
   doc.text(`Description: ${product.description || "No description"}`);
   doc.moveDown(0.5);
-  doc.text(`Price: S./${product.price}`);
+  doc.text(`Price: $${product.price}`);
   doc.moveDown(0.5);
 
   doc.moveDown(1);
